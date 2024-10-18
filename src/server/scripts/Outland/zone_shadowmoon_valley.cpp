@@ -2235,6 +2235,55 @@ struct dragonmaw_race_npc : public ScriptedAI
         Player* _player;
 };
 
+// 38054 - Random Rocket Missile
+class spell_random_rocket_missile : public SpellScript
+{
+    PrepareSpellScript(spell_random_rocket_missile);
+
+    void CheckTargets(std::list<WorldObject*>& targets)
+    {
+        targets.remove_if([&](WorldObject const* target) -> bool
+        {
+            if (GameObject const* go = target->ToGameObject())
+                return go->getLootState() == GO_ACTIVATED; // can only hit unused Deathforged Infernal
+            return true;
+        });
+    }
+
+    void Register() override
+    {
+        OnObjectAreaTargetSelect += SpellObjectAreaTargetSelectFn(spell_random_rocket_missile::CheckTargets, EFFECT_0, TARGET_GAMEOBJECT_SRC_AREA);
+    }
+};
+
+enum FelReaverSentinel
+{
+    SPELL_RANDOM_ROCKET_MISSILE = 38054
+};
+
+// 38055 - Destroy Deathforged Infernal
+class spell_destroy_deathforged_infernal : public SpellScript
+{
+    PrepareSpellScript(spell_destroy_deathforged_infernal);
+
+    bool Validate(SpellInfo const* /*spellInfo*/) override
+    {
+        return ValidateSpellInfo({SPELL_RANDOM_ROCKET_MISSILE});
+    }
+
+    void HandleScriptEffect(SpellEffIndex effIndex)
+    {
+        PreventHitEffect(effIndex);
+        for (uint32 i = 0; i < 10; ++i)
+            GetCaster()->CastSpell((Unit*)nullptr, SPELL_RANDOM_ROCKET_MISSILE, true);
+    }
+
+    void Register() override
+    {
+        OnEffectHitTarget += SpellEffectFn(spell_destroy_deathforged_infernal::HandleScriptEffect, EFFECT_0, SPELL_EFFECT_SCRIPT_EFFECT);
+    }
+};
+
 void AddSC_shadowmoon_valley()
 {
     // Ours
@@ -2260,4 +2309,6 @@ void AddSC_shadowmoon_valley()
     RegisterCreatureAI(npc_korkron_or_wildhammer);
     RegisterSpellScript(spell_calling_korkron_or_wildhammer);
     RegisterSpellScript(spell_disrupt_summoning_ritual);
+    RegisterSpellScript(spell_random_rocket_missile);
+    RegisterSpellScript(spell_destroy_deathforged_infernal);
 }
