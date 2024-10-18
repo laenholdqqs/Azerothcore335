@@ -1,5 +1,8 @@
 --
 -- Fel Reaver Sentinel
+UPDATE `creature_template` SET `unit_flags` = `unit_flags`|32768|256, `AIName` = '' WHERE (`entry` = 21949);
+DELETE FROM `smart_scripts` WHERE `entryorguid` = 21949 AND `source_type` = 0;
+
 UPDATE `spell_linked_spell` SET `spell_effect` =38121 WHERE `spell_trigger`=38120;
 UPDATE `spell_linked_spell` SET `spell_effect` =38123 WHERE `spell_trigger`=38122;
 UPDATE `spell_linked_spell` SET `spell_effect` =38126 WHERE `spell_trigger`=38125;
