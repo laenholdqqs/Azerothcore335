@@ -88,7 +88,6 @@ void CharmInfo::InitPossessCreateSpells()
             case 40281: // Crashin' Thrashin' Racer
             case 23109: // Vengeful Spirit
             case 25653: // Power of the Blue Flight
-            case 28511: // Eye of Acherus
             case 21949: // Fel Reaver Sentinel
                 break;
             default:

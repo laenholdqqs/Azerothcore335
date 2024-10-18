@@ -1,12 +1,4 @@
 --
--- Eye of Acherus
-DELETE FROM `creature_template_spell` WHERE (`CreatureID` = 28511);
-INSERT INTO `creature_template_spell` (`CreatureID`, `Index`, `Spell`, `VerifiedBuild`) VALUES
-(28511, 0, 51859, 12340),
-(28511, 1, 51904, 12340),
-(28511, 2, 52006, 12340),
-(28511, 4, 52694, 12340);
-
 -- Fel Reaver Sentinel
 UPDATE `spell_linked_spell` SET `spell_effect` =38121 WHERE `spell_trigger`=38120;
 UPDATE `spell_linked_spell` SET `spell_effect` =38123 WHERE `spell_trigger`=38122;
