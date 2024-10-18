@@ -3951,7 +3951,6 @@ void Spell::EffectScriptEffect(SpellEffIndex effIndex)
                         }
                 }
                 break;
-
             }
         case SPELLFAMILY_ROGUE:
             {
