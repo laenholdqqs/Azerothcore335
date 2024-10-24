@@ -1255,8 +1255,8 @@ public:
             uint32 mapId = sObjectMgr->GetCreatureData(spawnId)->mapid;
             float newSparringPct = itr.second[1];
 
-            Unit* unit = ObjectAccessor::GetSpawnedCreatureByDBGUID(mapId, spawnId);
-            unit->ToCreature()->UpdateSparringPct(newSparringPct);
+            if (Unit* unit = ObjectAccessor::GetSpawnedCreatureByDBGUID(mapId, spawnId))
+                unit->ToCreature()->UpdateSparringPct(newSparringPct);
         }
 
         handler->SendGlobalGMSysMessage("DB table `game_graveyard` reloaded.");
