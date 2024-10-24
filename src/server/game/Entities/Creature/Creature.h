@@ -191,6 +191,7 @@ public:
     void CalculateMinMaxDamage(WeaponAttackType attType, bool normalized, bool addTotalPct, float& minDamage, float& maxDamage, uint8 damageIndex) override;
 
     void LoadSparringPct();
+    void UpdateSparringPct(float newValue);
     [[nodiscard]] float GetSparringPct() const { return _sparringPct; }
 
     bool HasWeapon(WeaponAttackType type) const override;

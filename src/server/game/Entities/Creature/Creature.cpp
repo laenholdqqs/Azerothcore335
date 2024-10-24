@@ -2813,6 +2813,11 @@ void Creature::LoadSparringPct()
     }
 }
 
+void Creature::UpdateSparringPct(float newValue)
+{
+    _sparringPct = newValue;
+}
+
 /// Send a message to LocalDefense channel for players opposition team in the zone
 void Creature::SendZoneUnderAttackMessage(Player* attacker)
 {
