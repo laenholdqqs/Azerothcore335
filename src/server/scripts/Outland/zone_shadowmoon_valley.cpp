@@ -18,6 +18,7 @@
 #include "CreatureScript.h"
 #include "GameObjectScript.h"
 #include "Group.h"
+#include "PassiveAI.h"
 #include "Player.h"
 #include "ScriptedCreature.h"
 #include "ScriptedGossip.h"
