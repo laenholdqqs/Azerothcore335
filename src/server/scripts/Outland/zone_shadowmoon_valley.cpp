@@ -47,7 +47,9 @@ EndContentData */
 // Ours
 enum TheFelAndTheFurious
 {
-    SPELL_RANDOM_ROCKET_MISSILE = 38054
+    SPELL_RANDOM_ROCKET_MISSILE = 38054,
+    SPELL_FEL_REAVER_SENTINEL_TAG = 38020,
+    SPELL_FRS_QUEST_CREDIT = 38022,
 };
 
 // 38055 - Destroy Deathforged Infernal
@@ -2251,12 +2253,12 @@ struct npc_fel_reaver_sentinel : public NullCreatureAI
 
     void SpellHit(Unit* /*caster*/, SpellInfo const* spellInfo) override
     {
-        if (spellInfo->Id == 38020)
+        if (spellInfo->Id == SPELL_FEL_REAVER_SENTINEL_TAG)
         {
             Player* charmer = me->GetCharmerOrOwnerPlayerOrPlayerItself();
             if (!charmer)
                 return;
-            me->CastSpell(charmer, 38022); // FRS Quest Credit
+            me->CastSpell(charmer, SPELL_FRS_QUEST_CREDIT);
         }
     }
 };
