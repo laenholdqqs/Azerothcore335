@@ -2235,11 +2235,9 @@ class spell_random_rocket_missile : public SpellScript
     }
 };
 
-struct npc_fel_reaver_sentinel : public CreatureAI
+struct npc_fel_reaver_sentinel : public NullCreatureAI
 {
-    npc_fel_reaver_sentinel(Creature* creature) : CreatureAI(creature) { }
-
-    void UpdateAI(uint32 /*diff*/) override {}
+    npc_fel_reaver_sentinel(Creature* creature) : NullCreatureAI(creature) { }
 
     void OnCharmed(bool apply) override
     {
