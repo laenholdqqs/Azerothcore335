@@ -1245,7 +1245,7 @@ public:
 
     static bool HandleReloadCreatureSparringCommand(ChatHandler* handler)
     {
-        LOG_INFO("server.loading", "Reloading game_graveyard table...");
+        LOG_INFO("server.loading", "Reloading creature_sparring table...");
 
         auto const& sparringData = sObjectMgr->GetSparringData();
 

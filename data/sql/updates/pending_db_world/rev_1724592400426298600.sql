@@ -10,4 +10,4 @@ CREATE TABLE `creature_sparring` (
 
 -- Reload command
 DELETE FROM `command` WHERE `name` = 'reload creature_sparring';
-INSERT INTO `command` (`name`, `security`, `help`) VALUES ('creature_sparring', 3, 'Syntax: .reload creature_sparring\nReload all creatures with an entry in creature_sparring table.');
+INSERT INTO `command` (`name`, `security`, `help`) VALUES ('reload creature_sparring', 3, 'Syntax: .reload creature_sparring\nReload all creatures with an entry in creature_sparring table.');

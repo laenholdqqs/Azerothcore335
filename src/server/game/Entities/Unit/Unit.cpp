@@ -1035,7 +1035,7 @@ uint32 Unit::DealDamage(Unit* attacker, Unit* victim, uint32 damage, CleanDamage
     // Sparring
     if (victim->CanSparringWith(attacker))
     {
-        if(damage >= victim->GetHealth())
+        if (damage >= victim->GetHealth())
             damage = 0;
 
         uint32 sparringHealth = victim->GetHealth() * (victim->ToCreature()->GetSparringPct() / 100);
@@ -3973,13 +3973,13 @@ void Unit::_UpdateAutoRepeatSpell()
 
 bool Unit::CanSparringWith(Unit const* attacker) const
 {
-    if (GetTypeId() != TYPEID_UNIT || IsCharmedOwnedByPlayerOrPlayer())
+    if (!IsCreature() || IsCharmedOwnedByPlayerOrPlayer())
         return false;
 
     if (!attacker)
         return false;
 
-    if (attacker->GetTypeId() != TYPEID_UNIT || attacker->IsCharmedOwnedByPlayerOrPlayer())
+    if (!attacker->IsCreature() || attacker->IsCharmedOwnedByPlayerOrPlayer())
         return false;
 
     if (Creature const* me = ToCreature())
